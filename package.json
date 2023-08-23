@@ -40,7 +40,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/WhatsApp/WhatsApp-Nodejs-SDK.git"
+		"url": "git+https://github.com/GabrielBragaGit/WhatsApp-Nodejs-SDK.git"
 	},
 	"keywords": [
 		"WhatsApp",
@@ -55,9 +55,9 @@
 	"author": "Rashed Talukder",
 	"license": "SEE LICENSE IN LICENSE FILE",
 	"bugs": {
-		"url": "https://github.com/WhatsApp/WhatsApp-Nodejs-SDK/issues"
+		"url": "https://github.com/GabrielBragaGit/WhatsApp-Nodejs-SDK/issues"
 	},
-	"homepage": "https://whatsapp.github.io/WhatsApp-Nodejs-SDK/",
+	"homepage": "https://github.com/GabrielBragaGit/WhatsApp-Nodejs-SDK",
 	"dependencies": {
 		"@types/node": "~18.11.18"
 	},
