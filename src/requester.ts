@@ -6,10 +6,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import Logger from './logger';
 import HttpsClient from './httpsClient';
+import Logger from './logger';
 import { HttpMethodsEnum } from './types/enums';
-import { RequesterClass, GeneralHeaderInterface } from './types/requester';
+import { GeneralHeaderInterface, RequesterClass } from './types/requester';
 
 const LIB_NAME = 'REQUESTER';
 const LOG_LOCAL = false;
@@ -53,13 +53,16 @@ export default class Requester implements RequesterClass {
 	}
 
 	buildCAPIPath(endpoint: string): string {
+		if (endpoint.startsWith('extra@')) {
+			return `/${this.apiVersion}/${endpoint.split('@')[1]}`;
+		}
 		return `/${this.apiVersion}/${this.phoneNumberId}/${endpoint}`;
 	}
 
 	async sendCAPIRequest(
 		method: HttpMethodsEnum,
 		endpoint: string,
-		timeout: number,
+		timeout?: number,
 		body?: any,
 	) {
 		const contentType = 'application/json';
@@ -76,7 +79,7 @@ export default class Requester implements RequesterClass {
 			this.buildCAPIPath(endpoint),
 			method,
 			this.buildHeader(contentType),
-			timeout,
+			timeout || 20000,
 			method == 'POST' || method == 'PUT' ? body : undefined,
 		);
 	}
