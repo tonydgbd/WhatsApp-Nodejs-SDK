@@ -6,6 +6,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { semanticVersionString } from './types/version';
+import { semanticVersionString } from "./types/version";
 
-export const SDKVersion: semanticVersionString = '0.0.5-Alpha';
+export const SDKVersion: semanticVersionString = '0.0.6-Alpha';
