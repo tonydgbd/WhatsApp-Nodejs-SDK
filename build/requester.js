@@ -36,8 +36,10 @@ class Requester {
         return headers;
     }
     buildCAPIPath(endpoint) {
-        if (endpoint.startsWith('extra@')) {
+        if (endpoint.startsWith('audioid@')) {
             return `/${this.apiVersion}/${endpoint.split('@')[1]}`;
+        }
+        else if (endpoint.startsWith('media@')) {
         }
         return `/${this.apiVersion}/${this.phoneNumberId}/${endpoint}`;
     }

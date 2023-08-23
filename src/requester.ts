@@ -53,8 +53,9 @@ export default class Requester implements RequesterClass {
 	}
 
 	buildCAPIPath(endpoint: string): string {
-		if (endpoint.startsWith('extra@')) {
+		if (endpoint.startsWith('audioid@')) {
 			return `/${this.apiVersion}/${endpoint.split('@')[1]}`;
+		} else if (endpoint.startsWith('media@')) {
 		}
 		return `/${this.apiVersion}/${this.phoneNumberId}/${endpoint}`;
 	}
