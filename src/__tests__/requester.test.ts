@@ -21,6 +21,7 @@ describe('HTTP requester tests', () => {
 		sdkConfig.WA_PHONE_NUMBER_ID,
 		sdkConfig.CLOUD_API_ACCESS_TOKEN,
 		sdkConfig.WA_BUSINESS_ACCOUNT_ID,
+		sdkConfig.M4D_APP_ID,
 		'test-user-agent',
 	);
 

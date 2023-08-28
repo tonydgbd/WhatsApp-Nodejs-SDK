@@ -20,6 +20,7 @@ export default class Requester implements RequesterClass {
 	accessToken: Readonly<string>;
 	phoneNumberId: Readonly<number>;
 	businessAcctId: Readonly<string>;
+	appId: Readonly<string>;
 	apiVersion: Readonly<string>;
 	userAgent: Readonly<string>;
 	host: Readonly<string>;
@@ -32,6 +33,7 @@ export default class Requester implements RequesterClass {
 		phoneNumberId: number,
 		accessToken: string,
 		businessAcctId: string,
+		appId: string,
 		userAgent: string,
 	) {
 		this.client = new HttpsClient();
@@ -40,6 +42,7 @@ export default class Requester implements RequesterClass {
 		this.phoneNumberId = phoneNumberId;
 		this.accessToken = accessToken;
 		this.businessAcctId = businessAcctId;
+		this.appId = appId;
 		this.userAgent = userAgent;
 	}
 
@@ -57,9 +60,7 @@ export default class Requester implements RequesterClass {
 		if (endpoint.startsWith('media@'))
 			return `/${this.apiVersion}/${endpoint.split('@')[1]}`;
 		else if (endpoint.startsWith('template@'))
-			return `/${this.apiVersion}/${this.businessAcctId}/${
-				endpoint.split('@')[1]
-			}`;
+			return `/${this.apiVersion}/${this.appId}/${endpoint.split('@')[1]}`;
 		return `/${this.apiVersion}/${this.phoneNumberId}/${endpoint}`;
 	}
 

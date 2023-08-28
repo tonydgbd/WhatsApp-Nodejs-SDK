@@ -13,12 +13,13 @@ export default class Requester implements RequesterClass {
     accessToken: Readonly<string>;
     phoneNumberId: Readonly<number>;
     businessAcctId: Readonly<string>;
+    appId: Readonly<string>;
     apiVersion: Readonly<string>;
     userAgent: Readonly<string>;
     host: Readonly<string>;
     protocol: Readonly<string>;
     port: Readonly<number>;
-    constructor(host: string, apiVersion: string, phoneNumberId: number, accessToken: string, businessAcctId: string, userAgent: string);
+    constructor(host: string, apiVersion: string, phoneNumberId: number, accessToken: string, businessAcctId: string, appId: string, userAgent: string);
     buildHeader(contentType: string): GeneralHeaderInterface;
     buildCAPIPath(endpoint: string): string;
     sendCAPIRequest(method: HttpMethodsEnum, endpoint: string, timeout?: number, body?: any): Promise<import("./types/httpsClient").HttpsClientResponseClass>;

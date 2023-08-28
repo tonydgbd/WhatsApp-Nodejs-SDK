@@ -16,7 +16,7 @@ const LIB_NAME = 'REQUESTER';
 const LOG_LOCAL = false;
 const LOGGER = new logger_1.default(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
 class Requester {
-    constructor(host, apiVersion, phoneNumberId, accessToken, businessAcctId, userAgent) {
+    constructor(host, apiVersion, phoneNumberId, accessToken, businessAcctId, appId, userAgent) {
         this.protocol = 'https:';
         this.port = 443;
         this.client = new httpsClient_1.default();
@@ -25,6 +25,7 @@ class Requester {
         this.phoneNumberId = phoneNumberId;
         this.accessToken = accessToken;
         this.businessAcctId = businessAcctId;
+        this.appId = appId;
         this.userAgent = userAgent;
     }
     buildHeader(contentType) {
@@ -40,7 +41,7 @@ class Requester {
         if (endpoint.startsWith('media@'))
             return `/${this.apiVersion}/${endpoint.split('@')[1]}`;
         else if (endpoint.startsWith('template@'))
-            return `/${this.apiVersion}/${this.businessAcctId}/${endpoint.split('@')[1]}`;
+            return `/${this.apiVersion}/${this.appId}/${endpoint.split('@')[1]}`;
         return `/${this.apiVersion}/${this.phoneNumberId}/${endpoint}`;
     }
     async sendCAPIRequest(method, endpoint, timeout, body) {

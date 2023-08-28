@@ -37,15 +37,15 @@ if (process.env.NODE_ENV !== 'production' ||
     process.env.TS_NODE_DEV === 'true') {
     Promise.resolve().then(() => __importStar(require('dotenv'))).then((dotenv) => dotenv.config());
 }
-const SDKEnums = __importStar(require("./types/enums"));
-const utils_1 = require("./utils");
-const version_1 = require("./version");
-const logger_1 = __importDefault(require("./logger"));
-const requester_1 = __importDefault(require("./requester"));
 const messages_1 = __importDefault(require("./api/messages"));
 const phoneNumbers_1 = __importDefault(require("./api/phoneNumbers"));
 const twoStepVerification_1 = __importDefault(require("./api/twoStepVerification"));
 const webhooks_1 = __importDefault(require("./api/webhooks"));
+const logger_1 = __importDefault(require("./logger"));
+const requester_1 = __importDefault(require("./requester"));
+const SDKEnums = __importStar(require("./types/enums"));
+const utils_1 = require("./utils");
+const version_1 = require("./version");
 const LIB_NAME = 'WHATSAPP';
 const LOG_LOCAL = false;
 const LOGGER = new logger_1.default(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
@@ -54,7 +54,7 @@ class WhatsApp {
     constructor(senderNumberId) {
         this.sdkVersion = version_1.SDKVersion;
         this.config = (0, utils_1.importConfig)(senderNumberId);
-        this.requester = new requester_1.default(this.config[SDKEnums.WAConfigEnum.BaseURL], this.config[SDKEnums.WAConfigEnum.APIVersion], this.config[SDKEnums.WAConfigEnum.PhoneNumberId], this.config[SDKEnums.WAConfigEnum.AccessToken], this.config[SDKEnums.WAConfigEnum.BusinessAcctId], this.userAgent());
+        this.requester = new requester_1.default(this.config[SDKEnums.WAConfigEnum.BaseURL], this.config[SDKEnums.WAConfigEnum.APIVersion], this.config[SDKEnums.WAConfigEnum.PhoneNumberId], this.config[SDKEnums.WAConfigEnum.AccessToken], this.config[SDKEnums.WAConfigEnum.BusinessAcctId], this.config[SDKEnums.WAConfigEnum.AppId], this.userAgent());
         this.messages = new messages_1.default(this.config, this.requester);
         this.phoneNumbers = new phoneNumbers_1.default(this.config, this.requester);
         this.twoStepVerification = new twoStepVerification_1.default(this.config, this.requester);

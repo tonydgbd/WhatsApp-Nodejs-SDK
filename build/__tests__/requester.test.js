@@ -16,7 +16,7 @@ const requester_1 = __importDefault(require("../requester"));
 describe('HTTP requester tests', () => {
     const sdkConfig = global.sdkConfig;
     const basePath = `/${sdkConfig.CLOUD_API_VERSION}/${sdkConfig.WA_PHONE_NUMBER_ID}`;
-    const request = new requester_1.default(sdkConfig.WA_BASE_URL, sdkConfig.CLOUD_API_VERSION, sdkConfig.WA_PHONE_NUMBER_ID, sdkConfig.CLOUD_API_ACCESS_TOKEN, sdkConfig.WA_BUSINESS_ACCOUNT_ID, 'test-user-agent');
+    const request = new requester_1.default(sdkConfig.WA_BASE_URL, sdkConfig.CLOUD_API_VERSION, sdkConfig.WA_PHONE_NUMBER_ID, sdkConfig.CLOUD_API_ACCESS_TOKEN, sdkConfig.WA_BUSINESS_ACCOUNT_ID, sdkConfig.M4D_APP_ID, 'test-user-agent');
     const default_response_body = { success: false };
     let scope;
     afterEach(() => {

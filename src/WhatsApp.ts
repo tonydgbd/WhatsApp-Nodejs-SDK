@@ -13,18 +13,18 @@ if (
 	import('dotenv').then((dotenv) => dotenv.config());
 }
 
-import { WAConfigType } from './types/config';
-import { WhatsAppClass } from './types/WhatsApp';
-import * as SDKEnums from './types/enums';
-import { semanticVersionString } from './types/version';
-import { importConfig } from './utils';
-import { SDKVersion } from './version';
-import Logger from './logger';
-import Requester from './requester';
 import MessagesAPI from './api/messages';
 import PhoneNumbersAPI from './api/phoneNumbers';
 import TwoStepVerificationAPI from './api/twoStepVerification';
 import WebhooksAPI from './api/webhooks';
+import Logger from './logger';
+import Requester from './requester';
+import { WhatsAppClass } from './types/WhatsApp';
+import { WAConfigType } from './types/config';
+import * as SDKEnums from './types/enums';
+import { semanticVersionString } from './types/version';
+import { importConfig } from './utils';
+import { SDKVersion } from './version';
 
 const LIB_NAME = 'WHATSAPP';
 const LOG_LOCAL = false;
@@ -52,6 +52,7 @@ export default class WhatsApp implements WhatsAppClass {
 			this.config[SDKEnums.WAConfigEnum.PhoneNumberId],
 			this.config[SDKEnums.WAConfigEnum.AccessToken],
 			this.config[SDKEnums.WAConfigEnum.BusinessAcctId],
+			this.config[SDKEnums.WAConfigEnum.AppId],
 			this.userAgent(),
 		);
 
