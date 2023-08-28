@@ -53,6 +53,7 @@ export default class Requester implements RequesterClass {
 	}
 
 	buildCAPIPath(endpoint: string): string {
+		console.log(this.businessAcctId);
 		if (endpoint.startsWith('media@'))
 			return `/${this.apiVersion}/${endpoint.split('@')[1]}`;
 		else if (endpoint.startsWith('template@'))
