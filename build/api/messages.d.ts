@@ -5,11 +5,11 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import { RequesterResponseInterface } from '../types/requester';
-import BaseAPI from './base';
 import { ComponentTypesEnum, MessageTypesEnum } from '../types/enums';
 import { RequestData } from '../types/httpsClient';
 import * as m from '../types/messages';
+import { RequesterResponseInterface } from '../types/requester';
+import BaseAPI from './base';
 export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
     private readonly commonMethod;
     private readonly commonEndpoint;

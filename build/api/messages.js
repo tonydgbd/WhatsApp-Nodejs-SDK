@@ -10,9 +10,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const base_1 = __importDefault(require("./base"));
-const enums_1 = require("../types/enums");
 const logger_1 = __importDefault(require("../logger"));
+const enums_1 = require("../types/enums");
+const base_1 = __importDefault(require("./base"));
 const LIB_NAME = 'MESSAGES_API';
 const LOG_LOCAL = false;
 const LOGGER = new logger_1.default(LIB_NAME, process.env.DEBUG === 'true' || LOG_LOCAL);
@@ -63,6 +63,7 @@ class MessagesAPI extends base_1.default {
     }
     async text(body, recipient, replyMessageId) {
         LOGGER.log(body);
+        body.preview_url = true;
         return this.send(JSON.stringify(this.bodyBuilder(enums_1.MessageTypesEnum.Text, body, recipient.toString(), replyMessageId)));
     }
     async video(body, recipient, replyMessageId) {
