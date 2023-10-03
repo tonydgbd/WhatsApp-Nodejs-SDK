@@ -8,4 +8,4 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SDKVersion = void 0;
-exports.SDKVersion = '0.0.6-Alpha';
+exports.SDKVersion = '0.0.7-Alpha';
