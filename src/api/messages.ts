@@ -6,8 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { RequesterResponseInterface } from '../types/requester';
-import BaseAPI from './base';
+import Logger from '../logger';
 import {
 	ComponentTypesEnum,
 	HttpMethodsEnum,
@@ -16,7 +15,8 @@ import {
 } from '../types/enums';
 import { RequestData } from '../types/httpsClient';
 import * as m from '../types/messages';
-import Logger from '../logger';
+import { RequesterResponseInterface } from '../types/requester';
+import BaseAPI from './base';
 
 const LIB_NAME = 'MESSAGES_API';
 const LOG_LOCAL = false;
@@ -208,6 +208,7 @@ export default class MessagesAPI extends BaseAPI implements m.MessagesClass {
 		replyMessageId?: string,
 	): Promise<RequesterResponseInterface<m.MessagesResponse>> {
 		LOGGER.log(body);
+		body.preview_url = true;
 		return this.send(
 			JSON.stringify(
 				this.bodyBuilder(
