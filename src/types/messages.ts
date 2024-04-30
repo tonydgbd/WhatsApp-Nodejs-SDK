@@ -8,14 +8,14 @@
 
 import { BaseClass } from './base';
 import {
-	MessageTypesEnum,
-	ComponentTypesEnum,
-	LanguagesEnum,
-	ParametersTypesEnum,
-	CurrencyCodesEnum,
-	ButtonTypesEnum,
 	ButtonPositionEnum,
+	ButtonTypesEnum,
+	ComponentTypesEnum,
+	CurrencyCodesEnum,
 	InteractiveTypesEnum,
+	LanguagesEnum,
+	MessageTypesEnum,
+	ParametersTypesEnum,
 } from './enums';
 import { GeneralRequestBody, RequesterResponseInterface } from './requester';
 
@@ -239,6 +239,26 @@ type ProductInteractiveObject = {
 	action: ActionObject;
 };
 
+type FlowInteractiveObject = {
+	type: InteractiveTypesEnum.Flow;
+	action: FlowActionObject;
+};
+
+type FlowParametersObject = {
+	mode?: 'draft' | 'published';
+	flow_message_version: '3';
+	flow_token: string;
+	flow_id: string;
+	flow_cta: string;
+	flow_action: 'navigate' | 'data_exchange';
+	flow_action_payload?: { screen: string; data: {} };
+};
+
+type FlowActionObject = {
+	name: InteractiveTypesEnum.Flow;
+	parameters: FlowParametersObject;
+};
+
 type ProductListInteractiveObject = {
 	type: InteractiveTypesEnum.ProductList;
 	body: SimpleTextObject;
@@ -251,7 +271,8 @@ export type InteractiveObject =
 	| ButtonInteractiveObject
 	| ListInteractiveObject
 	| ProductInteractiveObject
-	| ProductListInteractiveObject;
+	| ProductListInteractiveObject
+	| FlowInteractiveObject;
 
 export type InteractiveMessageRequestBody =
 	MessageRequestBody<MessageTypesEnum.Interactive> & {
