@@ -37,7 +37,8 @@ export declare const enum InteractiveTypesEnum {
     Button = "button",
     List = "list",
     Product = "product",
-    ProductList = "product_list"
+    ProductList = "product_list",
+    Flow = "flow"
 }
 export declare const enum ButtonTypesEnum {
     QuickReply = "quick_reply",

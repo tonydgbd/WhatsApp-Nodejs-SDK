@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 import { BaseClass } from './base';
-import { MessageTypesEnum, ComponentTypesEnum, LanguagesEnum, ParametersTypesEnum, CurrencyCodesEnum, ButtonTypesEnum, ButtonPositionEnum, InteractiveTypesEnum } from './enums';
+import { ButtonPositionEnum, ButtonTypesEnum, ComponentTypesEnum, CurrencyCodesEnum, InteractiveTypesEnum, LanguagesEnum, MessageTypesEnum, ParametersTypesEnum } from './enums';
 import { GeneralRequestBody, RequesterResponseInterface } from './requester';
 export type GeneralMessageBody = GeneralRequestBody & {
     /**
@@ -183,6 +183,26 @@ type ProductInteractiveObject = {
     header?: HeaderObject;
     action: ActionObject;
 };
+type FlowInteractiveObject = {
+    type: InteractiveTypesEnum.Flow;
+    action: FlowActionObject;
+};
+type FlowParametersObject = {
+    mode?: 'draft' | 'published';
+    flow_message_version: '3';
+    flow_token: string;
+    flow_id: string;
+    flow_cta: string;
+    flow_action: 'navigate' | 'data_exchange';
+    flow_action_payload?: {
+        screen: string;
+        data: {};
+    };
+};
+type FlowActionObject = {
+    name: InteractiveTypesEnum.Flow;
+    parameters: FlowParametersObject;
+};
 type ProductListInteractiveObject = {
     type: InteractiveTypesEnum.ProductList;
     body: SimpleTextObject;
@@ -190,7 +210,7 @@ type ProductListInteractiveObject = {
     header: HeaderObject;
     action: ActionObject;
 };
-export type InteractiveObject = ButtonInteractiveObject | ListInteractiveObject | ProductInteractiveObject | ProductListInteractiveObject;
+export type InteractiveObject = ButtonInteractiveObject | ListInteractiveObject | ProductInteractiveObject | ProductListInteractiveObject | FlowInteractiveObject;
 export type InteractiveMessageRequestBody = MessageRequestBody<MessageTypesEnum.Interactive> & {
     [MessageTypesEnum.Interactive]: InteractiveObject;
 };

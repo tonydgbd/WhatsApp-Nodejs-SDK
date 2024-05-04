@@ -41,6 +41,8 @@ class Requester {
             return `/${this.apiVersion}/${endpoint.split('@')[1]}`;
         else if (endpoint.startsWith('template@'))
             return `/${this.apiVersion}/${this.appId}/${endpoint.split('@')[1]}`;
+        else if (endpoint.startsWith('flows@'))
+            return `/${this.apiVersion}/${this.appId}/flows`;
         return `/${this.apiVersion}/${this.phoneNumberId}/${endpoint}`;
     }
     async sendCAPIRequest(method, endpoint, timeout, body) {

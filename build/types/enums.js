@@ -45,6 +45,7 @@ var InteractiveTypesEnum;
     InteractiveTypesEnum["List"] = "list";
     InteractiveTypesEnum["Product"] = "product";
     InteractiveTypesEnum["ProductList"] = "product_list";
+    InteractiveTypesEnum["Flow"] = "flow";
 })(InteractiveTypesEnum = exports.InteractiveTypesEnum || (exports.InteractiveTypesEnum = {}));
 var ButtonTypesEnum;
 (function (ButtonTypesEnum) {
