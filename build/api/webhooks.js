@@ -61,7 +61,7 @@ class WebhooksAPI extends base_1.default {
                                 req.destroy(); // close connection if payload is larger than 1MB for some reason
                         });
                         req.on('end', () => {
-                            const body = Buffer.concat(bodyBuf).toString();
+                            const body = bodyBuf;
                             const generatedSignature = (0, utils_1.generateXHub256Sig)(body, this.config[enums_1.WAConfigEnum.AppSecret]);
                             const cbBody = JSON.parse(body);
                             if (generatedSignature == xHubSignature) {
